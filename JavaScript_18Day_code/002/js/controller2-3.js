@@ -24,3 +24,7 @@ document.write('b1 = ' + b1 + '<br>');
 document.write('b2 = ' + b2 + '<br>');
 document.write('b3 = ' + b3 + '<br>');
 
+//alert(aa); //变量没有声明，就使用。报错 Uncaught ReferenceError: aa is not defined
+aa = 5;//变量没有声明的时候，只有这种赋值情况下，是正常的。其他当变量没有声明，就使用情况，会报错
+alert(aa);//正常
+
