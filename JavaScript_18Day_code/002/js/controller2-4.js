@@ -79,6 +79,38 @@ var iStart = sToken2.indexOf(' '),iEnd;
 if(iStart != -1){
 	iEnd = sToken2.indexOf(' ',iStart + 1);
 	if(iEnd != -1){
-		document.write('substring = ' + sToken2.substring(iStart + 1,iEnd) + '<br />');
+		document.write('substring = [' + sToken2.substring(iStart + 1,iEnd) + ']<br />');
 	}
 }
+
+//boolean
+var bCheck = true;
+document.write('bCheck = ' + bCheck + '<br />');
+bCheck = false;
+document.write('bCheck = ' + bCheck + '<br />');
+bCheck = 1 == 2//false,赋值和==都是表达式，==优先级比赋值高
+document.write('bCheck = ' + bCheck + '<br />');
+
+//undefined
+var oTemp;
+document.write('oTemp = ' + oTemp + '<br />');
+document.write('typeof oTemp = ' + typeof oTemp + '<br />');
+
+//typeof 判断变量类型
+oTemp = 1;
+document.write('typeof oTemp = ' + typeof oTemp + '<br />');
+oTemp = 'SSS';
+document.write('typeof oTemp = ' + typeof oTemp + '<br />');
+oTemp = true;
+document.write('typeof oTemp = ' + typeof oTemp + '<br />');
+oTemp = null;
+document.write('typeof oTemp = ' + typeof oTemp + '<br />');
+oTemp = undefined;
+document.write('typeof oTemp = ' + typeof oTemp + '<br />');
+var oTemp233;
+document.write('typeof oTemp233 = ' + typeof oTemp233 + '<br />');
+
+//undefined与null的关系
+document.write('(undefined == undefined) ' + (undefined == undefined) + '<br />');
+document.write('(null == null) ' + (null == null) + '<br />');
+document.write('(undefined == null) ' + (undefined == null) + '<br />');
