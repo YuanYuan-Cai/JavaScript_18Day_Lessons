@@ -70,3 +70,54 @@ document.write('[%] iNum = '+ iNum + '<br />');//NaN
 iNum = 0 / 0;
 document.write('[%] iNum = '+ iNum + '<br />');//NaN
 
+// ++
+iNum = 5;
+//iNum++;
+document.write('[++] iNum = '+ iNum++ + '<br />');//5,iNum = 6
+
+iNum = 5;
+document.write('[++] iNum = '+ ++iNum + '<br />');//6,iNum = 6
+
+iNum = 5;
+iNum = iNum++ + 10 + ++iNum;
+//iNum:22
+//iNum = 5 + 10 + ++iNum;
+//iNum = 15 + ++iNum;
+//iNum = 15 + 7;
+//iNum = 22;
+//22
+document.write('[++] iNum = '+ iNum + '<br />');//22
+
+iNum = 7;
+iNum = 10 - ++iNum + ++iNum - iNum++ - iNum++;
+//iNum:-8
+//iNum = 10 - 8 + ++iNum - iNum++ - iNum++;
+//iNum = 2 + 9 - iNum++ - iNum++;
+//iNum = 11 - 9 - iNum++;
+//iNum = 2 - 10;
+//iNum = -8;
+document.write('[++] iNum = '+ iNum + '<br />');
+
+// --
+iNum = 5;
+--iNum;
+document.write('[--] iNum = '+ iNum + '<br />');//4
+
+iNum = 5;
+iNum = iNum-- + 10 + --iNum;
+//iNum:3
+//iNum = 5 + 10 + --iNum;
+//iNum = 15 + --iNum;
+//iNum = 15 + 3;
+//iNum = 18;
+//18
+document.write('[--] iNum = '+ iNum + '<br />');//18
+
+iNum = 5;
+iNum = (13 % 7) + 4 * 7 /iNum-- - ++iNum
+//iNum = 5
+//iNum = 6 + 28/5 - ++iNum
+//iNum = 6 + 5.6 - ++iNum
+//iNum = 11.6 - 5
+//6.6
+document.write('[--] iNum = '+ iNum + '<br />');
