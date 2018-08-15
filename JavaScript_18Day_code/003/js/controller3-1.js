@@ -121,3 +121,6 @@ iNum = (13 % 7) + 4 * 7 /iNum-- - ++iNum
 //iNum = 11.6 - 5
 //6.6
 document.write('[--] iNum = '+ iNum + '<br />');
+
+
+
