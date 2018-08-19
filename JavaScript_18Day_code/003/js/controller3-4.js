@@ -59,3 +59,45 @@ document.write('[!]!true ?' + (!true) + '<br />');
 ▸ =、 +=、 -=、 *=、 /=、 %=
 ▸ ，
  */
+
+//交换两个变量
+var iNum2 = 123;
+var iNum3 = 456;
+//var iTemp = iNum2;
+//iNum2 = iNum3;
+//iNum3 = iTemp;
+
+//不介入第三个变量，交换两个变量
+iNum2 += iNum3;//123 + 456
+iNum3 = iNum2 - iNum3;//123 + 456 -456
+iNum2 = iNum2 - iNum3;//123 + 456 -123
+//问题在于↑这种方法容易加了超过
+
+var iNum1 = 4;
+document.write('[1]'+(30<15?!true:true,iNum1*4+5<3==25>24&&false||true)+'<br />');
+//30<15?!true:true,iNum1*4+5<3==25>24&&false||true
+//false?!true:true,iNum1*4+5<3==25>24&&false||true
+//false?false:true,iNum1*4+5<3==25>24&&false||true
+//true,iNum1*4+5<3==25>24&&false||true
+//4*4+5<3==25>24&&false||true
+//21<3==25>24&&false||true
+//false==true&&false||true
+//false&&false||true
+//false||true
+//true
+
+iNum1 = 4;
+document.write('[2]'+(100>15?(iNum1=++iNum1*3+5/3):false)+'<br />');
+//iNum1:16.666
+//100>15?(iNum1=++iNum1*3+5/3):false
+//100>15?(iNum1=5*3+5/3):false
+//100>15?(16.6667):false
+//16.6667→答案是16.666666666666668
+
+
+iNum1 = 4;
+document.write('[3]'+(1+1+true+null+'ccc'+1+1+true+null)+'<br />');
+//1+1+true+null+'ccc'+1+1+true+null
+//'3ccc'+1+1+true+null
+//'3ccc11truenull'
+
