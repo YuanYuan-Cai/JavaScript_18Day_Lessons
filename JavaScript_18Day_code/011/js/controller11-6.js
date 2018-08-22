@@ -80,18 +80,34 @@ str = 'abbbaabbbaaabbb1234';
 // ^ 表示开始
 // $ 表示结束
 str = 'a==b';
-console.log(str.match(/.\b/g));
-console.log(str.match(/.\b./g));
-console.log(str.match(/^./g));
-console.log(str.match(/^a/g));
-console.log(str.match(/.$/g));
+//console.log(str.match(/.\b/g));
+//console.log(str.match(/.\b./g));
+//console.log(str.match(/^./g));
+//console.log(str.match(/^a/g));
+//console.log(str.match(/.$/g));
 
 // 6.分组,一个正则表达式，不但可以对整个匹配进行操作，还可以对其中的()中的子串进行匹配，分组
+// (pattern)匹配pattern同时捕获结果，自动设定组号；
+//  \1,RegExp.$1:反向引用
+//  (?<name>pattern)匹配pattern同时捕获结果，设定name为组名
+//   \k<name>:反向引用
 str = 'mom and dad';
-console.log(str.match(/mom(and dad)?/));
-console.log(RegExp.$1);
+//console.log(str.match(/mom(and dad)?/));
+//console.log(RegExp.$1);
 
 str = 'word excel excel hello world world!';
-console.log(str.match(/(\b[a-zA-Z]+\b)\s+\1/g));
+//console.log(str.match(/(\b[a-zA-Z]+\b)\s+\1/));
+//console.log(str.match(/(?<n1>\b[a-zA-Z]+\b)\s+\k<n1>/));//chorm中报错，还没有找到原因
+//console.log(RegExp.lastMatch);
+//console.log(RegExp.$1);
 
-//38
+//零宽（负向）先行\后行断言
+str = 'reabc;rcaaa=bbb=;';
+//寻找两个字符，两字符后面以分号结尾
+console.log(str.match(/.{2}(?=;)/g));//零宽后行断言
+//寻找四个字符，以ea开头
+console.log(str.match(/(?<=ea).{4}/g));//零宽先行断言
+//寻找三个字母，不以分号结尾
+console.log(str.match(/[a-z]{3}(?!;)/g));//零宽负向后行断言
+//寻找不以re开头的三个字母
+console.log(str.match(/(?<!re)[a-z]{3}/g));
