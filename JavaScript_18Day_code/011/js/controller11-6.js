@@ -110,4 +110,65 @@ console.log(str.match(/(?<=ea).{4}/g));//零宽先行断言
 //寻找三个字母，不以分号结尾
 console.log(str.match(/[a-z]{3}(?!;)/g));//零宽负向后行断言
 //寻找不以re开头的三个字母
-console.log(str.match(/(?<!re)[a-z]{3}/g));
+console.log(str.match(/(?<!re)[a-z]{3}/g));//零宽负向先行断言
+
+//7.或 |
+str = 'var         aaa;';
+str2 = 'function         f(){}';
+
+// /^var\s+[a-zA-Z]\w*;/ //匹配变量名
+// /^function\s+[a-zA-Z]\w*\s*\(\)\{\}/ // 匹配函数
+
+//console.log(str.match(/^var\s+[a-zA-Z]\w*;/));
+//console.log(str2.match(/^function\s+[a-zA-Z]\w*\s*\(\)\{\}/));
+////使用或
+//console.log(str.match(/^var\s+[a-zA-Z]\w*;|^function\s+[a-zA-Z]\w*\s*\(\)\{\}/));
+//console.log(str2.match(/^var\s+[a-zA-Z]\w*;|^function\s+[a-zA-Z]\w*\s*\(\)\{\}/));
+
+//8.练习题
+//8.1匹配手机号：1开头，第二位34579，11位，130-0000-0000，3/4之间和7/8之前有可能有减号，也可能没有，13000000000
+
+//var regExp2 = /^1[34579]\d-?\d{4}-?\d{4}$/;
+//
+//str = '13000000000';
+//console.log(str.match(regExp2));
+//str = '130-0000-0000';
+//console.log(str.match(regExp2));
+//str = '99999999999'
+//console.log(str.match(regExp2));
+
+//8.2 匹配信箱：字母，数字，下划线-, . @xxxx.xxx.xxx 字母，数字，下划线-
+
+//var regExp2 = /^[\w\-\.]+@[\w\-]+(\.[a-zA-Z]{2,5}){1,3}$/;
+//
+//str = 'aaa-1bbb.@163.com.cn'
+//console.log(str.match(regExp2));
+
+//8.3 匹配整数 19，-5 45
+//var regExp2 = /^[+-]?\d+$/;
+//
+//str = '1999';
+//console.log(str.match(regExp2));
+//str = '-1';
+//console.log(str.match(regExp2));
+//str = '0';
+//console.log(str.match(regExp2));
+//str = '+0.1';
+//console.log(str.match(regExp2));
+
+// 匹配浮点数 ：整数，小数0.35，-1.7；科学计数法 小数E（e）整数
+//var regExp2 = /^[+-]?\d+(\.\d+)?([Ee][+-]?\d+)?$/;
+//
+//str = '100';
+//console.log(str.match(regExp2));
+//str = '-0.47';
+//console.log(str.match(regExp2));
+//str = '1.2E5';
+//console.log(str.match(regExp2));
+//str = '-3e8';
+//console.log(str.match(regExp2));
+
+// 匹配中国字
+var regExp2 = /^[\u4e00-\u9fa5\uff0c\u3002]+$/;
+str = '弱小和无知不是生存的障碍，傲慢才是。';
+console.log(str.match(regExp2));
