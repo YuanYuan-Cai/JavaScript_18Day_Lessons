@@ -134,6 +134,3 @@ var arr4 = [0,'accc',undefined,null,true,{}];
 //console.log(arr.pop());
 //console.log(arr.join(','));
 
-a = '2 + 3 * 5 - 4';
-// 四则运算式，先乘除后加减
-// 数0~9，+-*/，没有括号
