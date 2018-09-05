@@ -6,16 +6,11 @@
 //2*3*4*5
 //1*2+3*4/2-4/2
 var x = '1*2+3*4/2-4/2';
-
+var OPERATOR = [['+',0],['-',0],['*',1],['/',1]];
 
 function run(x){
 	var nArray = [];
 	var oArray = [];
-	
-	var cl = 5; //--------------------------to be deleted--------------
-	
-	var OPERATOR = [['+',0],['-',0],['*',1],['/',1]];
-	
 	var nRet = 0;
 	var iRet = '';
 	var i = 0; // pointer to current op
@@ -34,19 +29,12 @@ function run(x){
 		for(;i < x.length;){
 			// get the operator
 			sPToken = x.charAt(i);
-			// ----validate the operator
-			for(var j = 0; j < OPERATOR.length; j++){
-				if(OPERATOR[j][0] == sPToken){
-					break;
-				}
-			}
-			if(j >= OPERATOR.length){
-				iRet = 'Error at position ' + i + ' : Syntax error: invalid operator \'' + sPToken + '\'';
+			// ----validate the operator && get the priority
+			nPriority = validateOperator(sPToken);
+			if(typeof(nPriority) != 'number'){
+				iRet = nPriority + 'at position ' + i;
 				break;
 			}
-			// ----get the priority
-			nPriority = OPERATOR[j][1];
-			
 			// get the second number
 			sNToken = x.charCodeAt(i+1) - 48;
 			if(sNToken < 0 || sNToken > 9){
@@ -55,22 +43,7 @@ function run(x){
 			}
 			
 			// compare the priority of the operatore
-			
-			while(oArray.length != 0 && oArray[oArray.length-1][1] >= nPriority){
-				// 弹栈计算
-				var n;
-				var n2 = nArray.pop();
-				var n1 = nArray.pop();
-				var op = oArray.pop()[0];
-				
-				n = calculate(op,n1,n2);
-				
-				if(typeof(n) != 'number'){
-					break;
-				}else{
-					nArray.push(n);
-				}
-			}
+			(typeof(iRet=stackOut(oArray,nArray,false,nPriority)) == 'string')?true:iRet = '';
 			
 			if(iRet){
 				break;
@@ -85,21 +58,8 @@ function run(x){
 			oArray.push(opPair);
 			i += 2;
 		}
-		while(oArray.length != 0){
-			// 弹栈计算
-			var n;
-			var n2 = nArray.pop();
-			var n1 = nArray.pop();
-			var op = oArray.pop()[0];
-			
-			n = calculate(op,n1,n2);
-			
-			if(typeof(n) != 'number'){
-				break;
-			}else{
-				nArray.push(n);
-			}
-		}
+		(typeof(iRet=stackOut(oArray,nArray,true)) == 'string')?true:iRet = '';
+		
 	}
 	
 	// check;
@@ -111,6 +71,27 @@ function run(x){
 	}
 
 	return nRet;
+}
+
+function stackOut(oArray,nArray,bIsNotCareAboutPriority,nPriority){
+	var iRet = '';
+	while(oArray.length != 0 && (bIsNotCareAboutPriority || oArray[oArray.length-1][1] >= nPriority)){
+		// 弹栈计算
+		var n;
+		var n2 = nArray.pop();
+		var n1 = nArray.pop();
+		var op = oArray.pop()[0];
+		
+		n = calculate(op,n1,n2);
+		
+		if(typeof(n) != 'number'){
+			iRet = n;
+			break;
+		}else{
+			nArray.push(n);
+		}
+    }
+	return (iRet == '')?true:iRet;  
 }
 
 function calculate(op,n1,n2){
@@ -140,4 +121,20 @@ function calculate(op,n1,n2){
 	    return (iRet == '')?n:iRet; 
 	
 }
+
+function validateOperator(sPToken){
+	var iRet = '';
+	for(var j = 0; j < OPERATOR.length; j++){
+		if(OPERATOR[j][0] == sPToken){
+			break;
+		}
+	}
+	if(j >= OPERATOR.length){
+		iRet = 'Error : Syntax error: invalid operator \'' + sPToken + '\'';
+	}
+	
+	return (iRet == '')?OPERATOR[j][1]:iRet;
+}
+
 console.log(run(x));
+
