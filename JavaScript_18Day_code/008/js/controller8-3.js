@@ -40,3 +40,35 @@
 //console.log(aa);//undefined
 //var aa = 5;
 //console.log(aa);//5
+
+//4,在脚本中，所有的函数声明，在脚本的预编译阶段完成，所有函数的声明与实际的书写位置无关
+//console.log(haha);
+//function haha(){
+//	console.log('h1');
+//}
+
+//5,在脚本中，预编译中如果变量与函数同名，那么，函数将覆盖变量
+//console.log(haha);
+//var haha = 123;
+//function haha(){
+//	console.log('h1');
+//}
+
+//6,在脚本中，预编译中只有函数能够覆盖变量，变量无法覆盖函数
+//console.log(haha);
+//function haha(){
+//	console.log('h1');
+//}
+//var haha = 123;
+
+//7,在脚本中，预编译中后面的函数声明会覆盖前面的函数声明，并且，忽略参数
+//console.log(haha(1));
+//console.log(haha);
+//function haha(a){
+//	console.log('haha1');
+//}
+//function haha(a,b){
+//	console.log('haha2');
+//}
+
+
