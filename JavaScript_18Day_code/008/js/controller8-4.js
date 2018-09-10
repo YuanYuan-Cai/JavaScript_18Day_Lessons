@@ -78,6 +78,7 @@
 //T:function
 //
 
+//练习1
 //console.log(scope);//undefined
 //var scope = 'global';
 //function t(){
@@ -97,13 +98,13 @@
 //scope:'global'
 //t:function
 
-function test(x,x){
-	console.log(x);//function
-	x = 5;
-	console.log(arguments);[12,5]
-	function x(){}
-}
-test(12,13);
+//function test(x,x){
+//	console.log(x);//function
+//	x = 5;
+//	console.log(arguments);[12,5]
+//	function x(){}
+//}
+//test(12,13);
 
 //GO:
 //text:function
@@ -112,6 +113,97 @@ test(12,13);
 //arguments:[12,13]
 //x-(arugments[1]):function
 
+//练习2
+//b = 'cba';
+//function a(a,a){
+//	console.log(a);//function
+//	console.log(b);//undefined
+//	var b = 'abc';
+//	
+//	a();
+//	function a(){
+//		console.log(a);//function
+//		console.log(b);//abc
+//	}
+//}
+//a(5,10);
+
+//GO:
+//this:window
+//a:function
+//b:'cba'
+//
+//
+//a-AO:
+//arguments:[5,function]
+//a-(arguments[1]):function
+//b:'abc'
+//this:window
+//
+//a.a-AO:
+//arguments:[]
+//this:window
+
+//练习3
+//var str = 'aaa';
+//str += 1;
+//var test = typeof(str);//string
+//if(test.length = 6){
+//	test.newproperty = 'string'
+////调包装类，其等效于↓
+////	var obj = new String();
+////	obj.newproperty = 'string';
+////	摧毁obj
+//}
+//console.log(test.newproperty);//undefined
+////还会调包装类，其等效于↓
+////	var obj = new String();
+////	obj.newproperty = 'string';
+////	摧毁obj
 
 
+//练习4
+//var x = 1,y = z = 0;
+//function add(n){
+//	return n = n + 1;
+//}
+//y = add(x);
+//function add(n){
+//	return n = n + 3;
+//}
+//z = add(x);
+//问x，y，x的值
+//x = 1
+//y = 4
+//z = 4
 
+//练习5
+//哪个可以输出：[1,2,3,4,5]->A
+//A
+//function foo(x){
+//	console.log(arguments);
+//	return x;
+//}
+//foo(1,2,3,4,5);
+
+//B
+//function foo(x){
+//	console.log(arguments);
+//	return x;
+//}[1,2,3,4,5]
+//函数声明+一个数组
+
+//C
+//function foo(x){
+//	console.log(arguments);
+//	return x;
+//}(1,2,3,4,5);
+//函数声明+一个逗号表达式
+
+
+//练习6
+function test(x,y,a){
+	arguments[2] = 10;
+	alert(a);//10
+}
+test(1,2,3);
