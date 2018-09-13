@@ -141,4 +141,68 @@
 //HP008:
 //HP009:
 
-//1:43:09 23
+
+//函数递归调用时，是产生相同的AO还是不同的AO？ 
+//不同
+//var b = 15;
+//function fa(x){
+//	if(x > 0){
+//		var a = 100;
+//		a++;
+//		fa(x-1);
+//	}
+//	return 0;
+//}
+//fa(3);
+//栈内存
+//ST001:GEC-SC:HP001
+//ST002:fa(3)EC-SC:HP003
+//ST003:fa(2)EC-SC:HP005
+//ST004:
+//ST005:
+//ST006:
+//ST007:
+//
+//
+////堆内存
+//HP001:GEC-SC: [HP002-(GO)](1)
+//HP002:GO:     {this:window,b:15;fa: function {[HP002-(GO)]}}(3)
+//HP003:fa(3)EC-SC:[HP002-(GO),HP004-(fa(3)-AO)](1)
+//HP004:fa(3)-AO:{this:window,x:3,a:101}(1)
+//HP005:fa(2)EC-SC:[HP002-(GO),HP006-(fa(2)-AO)](1)
+//HP006:fa(2)-AO:{this:window,x:3,a:101}(1)
+//HP007:
+//HP008:
+//HP009:
+
+//with，生成新的with variable object，放在作用域链表顶端。
+//var name = 1;
+//
+//var person = {
+//	name:2
+//}
+//console.log(name);//1
+//with(person){
+//	console.log(name);//2
+//}
+
+//生成作用域链
+//作用域链的应用:
+//	- 效率:
+//		- 尽量少使用靠近上层的变量,多使用自己的局部变量
+//	- 重名,容易出错:
+//		- 尽量减少不同层次函数使用相同的变量名
+//		- 避免函数名与变量名一样
+
+//函数退出以后AO是否一定被释放？ 
+function outer(){
+	var scope = 'outer';
+	function inner(){
+		return scope;
+	}
+	return inner;
+}
+var fn = outer();
+console.log(fn());
+
+
