@@ -32,3 +32,5 @@ var myAdd = add();
 myAdd();
 myAdd();
 myAdd();
+
+// 缓存存储结构
