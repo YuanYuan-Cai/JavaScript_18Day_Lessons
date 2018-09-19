@@ -51,3 +51,35 @@
 //
 //console.log(object.getNameFunc()());//The window
 //console.log(object.getNameFunc2());//my object
+
+var i = 1;
+var obj = {
+	i:2,
+	f:function(){
+		console.log(this.i);
+	}
+};
+
+var f2 = obj.f;
+//f2();//1
+//obj.f();//2
+
+var obj2 = {
+	i:3,
+	f:function(ff){
+		ff();
+	},
+	f2:function(){
+		function fff(){
+			console.log(this.i);
+		}
+		return fff;
+	}
+};
+obj2.f(obj.f);//1
+obj2.f = obj.f;
+obj2.f();//3
+obj2.f2()();//1
+
+
+
