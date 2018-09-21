@@ -33,3 +33,5 @@ var objString = new String(12345);
 //for(var i = 0;i < str.length;i++){
 //	console.log(str[i]);//包装类
 //}
+
+// 【课时27】String 27:09
