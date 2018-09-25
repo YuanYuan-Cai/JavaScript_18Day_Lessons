@@ -34,4 +34,64 @@ var objString = new String(12345);
 //	console.log(str[i]);//包装类
 //}
 
-// 【课时27】String 27:09
+//String()函数
+//indexOf()查找第一个子串的位置，0开始
+//var sToken = new String('Hello World!');
+//var l = sToken.indexOf('o');
+//console.log(l);
+//
+//// charAt(),返回当前位置的字符
+//console.log(sToken.charAt(l));
+//
+//// substring(),取一个子串
+//console.log(sToken.substring(0.l+1));
+//
+//// replace()
+//console.log(sToken.replace('o','A'));
+//console.log(sToken.replace(/o/g,'A'));
+
+// 特殊字符
+//str = '\'--\"--\\--\t--';
+//console.log(str);
+
+// 回车\r\n
+// \r 0x0d CR carrage return 回车
+// \n 0x0a LF line feed 换行
+// 1，文件是线性存储的，\r\n字符表示换行，编辑器为了照顾人类感受，见到\r\n，显示为换行
+// 2，为什么有CR，LF的区别。回车代表回到行首，换行代表下一行（打字机）
+// 3，window和Unix，linux里面表示的回车的字符不一样
+//    window：\r\n
+//    Unix\Linux:\n
+//    Mac:\r
+
+
+//str = 'a\r\nb\r\nc';
+//console.log(str);
+
+//str = '\u6211';
+//console.log(str);
+//
+//// toUpperCase()全变大写
+//str = 'aaa';
+//str = str.toUpperCase();
+//console.log(str);
+//
+////toLowerCase()全变小写
+//str = 'BBB';
+//str = str.toLowerCase();
+//console.log(str);
+
+// trim()去除空格，\t
+str = '  aaaa bbb\t';
+console.log(str);
+console.log(str.trimLeft());
+console.log(str.trimRight());
+console.log(str.trim());
+
+编码与解码
+编码:用户输入字符,计算机记录对应二进制的值
+解码:计算机根据记录的二进制值,显示成人类可以认识的字符图像
+
+字符集
+字符集
+【课时28】编码与解码 23:55
