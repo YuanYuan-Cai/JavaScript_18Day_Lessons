@@ -88,21 +88,3 @@ console.log(str.trimLeft());
 console.log(str.trimRight());
 console.log(str.trim());
 
-编码与解码
-编码:用户输入字符,计算机记录对应二进制的值
-解码:计算机根据记录的二进制值,显示成人类可以认识的字符图像
-
-字符集
-字符集(Charset):是一个系统支持的所有抽象字符的集合
-字符编码(Character Encoding):字符集的编解码规则
-常见字符集:
-	- ASCII字符集
-		- 0-127个
-		- 每个字符一个字节
-		- 0:30h,A:41h,a:61h
-	- GB字符集族:
-		- GB2312,GBK,GB18030
-	- Unicode字符集族:
-		- UTF-8,UTF-16,UTF-32
-	- UCS字符集族:
-		- UCS-2,UCS-4
