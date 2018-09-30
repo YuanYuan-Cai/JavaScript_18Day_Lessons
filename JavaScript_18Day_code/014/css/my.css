@@ -1,0 +1,18 @@
+p {
+	color: blue;
+}
+.red{
+	color:red;
+}
+
+p.red{
+	color:green;
+}
+
+.cls1{
+	color: black;
+}
+
+#theId{
+	color: #FF9000;
+}
