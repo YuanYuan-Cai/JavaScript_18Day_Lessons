@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.json.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			ul{
+				list-style: none;
+			}
+			
+			li{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 484px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="banner">
+			<ul>
+				<li><img src="img/banner1.jpg"/></li>
+				<li><img src="img/banner2.jpg"/></li>
+				<li><img src="img/banner3.jpg"/></li>
+				<li><img src="img/banner4.jpg"/></li>
+				<li><img src="img/banner5.jpg"/></li>
+				<li><img src="img/banner6.jpg"/></li>
+			</ul>
+		</div>
+		<script type="application/javascript">
+			var $j = 0;  // $j 当前图像
+			var $last = 0;
+			var $timer = '';
+			var $period = 2;
+			var $iIndex = 1;// zIndex
+			
+			var $imgs = $('div#banner ul li img');
+			$imgs.eq($j).css('z-index', $iIndex).css('opacity', '1');
+			$imgs.filter(':not(:eq(' + $j +'))').css('opacity', '0');
+			
+			function startRoll(){
+				$last = $j;
+				$j++;
+				$iIndex++;
+				if($j >= $imgs.length){
+					$j = 0;
+				}
+				$imgs.eq($j).css('z-Index', $iIndex).animate({opacity:1}, 1000, 'linear', function(){
+					$imgs.eq($last).css('opacity', '0');
+				});
+				
+				$timer = setTimeout('startRoll()', 2000);
+				console.log($last + '-' + $j);
+			}
+			
+			$timer = setTimeout('startRoll()', 2000);
+			
+		</script>
+	</body>
+</html>

@@ -7,6 +7,7 @@
 			ul{
 				list-style: none;
 			}
+			
 			li{
 				position: absolute;
 				left: 0;
@@ -19,64 +20,64 @@
 	<body>
 		<div id="banner">
 			<ul>
-				<li><img src="img/banner1.png" alt="" /></li>
-				<li><img src="img/banner2.png" alt="" /></li>
-				<li><img src="img/banner3.png" alt="" /></li>
-				<li><img src="img/banner4.png" alt="" /></li>
-				<li><img src="img/banner5.png" alt="" /></li>
-				<li><img src="img/banner6.png" alt="" /></li>
+				<li><img src="img/banner1.jpg"/></li>
+				<li><img src="img/banner2.jpg"/></li>
+				<li><img src="img/banner3.jpg"/></li>
+				<li><img src="img/banner4.jpg"/></li>
+				<li><img src="img/banner5.jpg"/></li>
+				<li><img src="img/banner6.jpg"/></li>
 			</ul>
 		</div>
 		<script type="application/javascript">
 			main();
 			
 			function main(){
-				var obj1=document.getElementById('banner');
-				var li=obj1.getElementsByTagName('li');
-				var j=0;
-				var iIndex=1;
+				var obj1 = document.getElementById('banner');
+				var li = obj1.getElementsByTagName('li');
+				var j = 0;
+				var iIndex = 1;
 				var timer;
 				
-		        for(var i=0;i<li.length;i++){
-		        	if(i==j){
-		        		li[i].style.opacity='1';
-		        		continue;
-		        	}
-		        	li[i].style.opacity='0';
-		        }
-				function starRoll(){
-					j++;
-					if(j>=li.length){
-						j=0;
+				for(var i = 0; i < li.length; i++){
+					if(i == j){
+						li[i].style.opacity = '1';
+						continue;
 					}
-					li[j].style.zIndex=iIndex;
-					iIndex++;
-					fadeIn(li[j],1)
-				};
-				function fadeIn(obj,period){
-					var COUNT=50;
-					clearInterval(obj.timer);
-					obj.timer=setInterval(function(){
-						var opacityValue=Number.parseFloat(obj.style.opacity);
-						opacityValue+=period/COUNT;
-						if(opacityValue<1){
-							obj.style.opacity=opacityValue;
-						}else{
-							obj.style.opacity=1;
-							clearInterval(obj.timer);
-							for(var i=0;i<li.length;i++){
-								if(i==j){
-		        					li[i].style.opacity='1';
-		        					continue;
-		        	  					}
-		        	
-		        					}
-							}
-					},1000/COUNT);
-					
-					
+					li[i].style.opacity = '0';
 				}
-				timer=setInterval(starRoll,2000);
+				
+				function startRoll(){
+					j++;
+					if(j >= li.length){
+						j = 0;
+					}
+					li[j].style.zIndex = iIndex;
+					iIndex++;
+					fadeIn(li[j],1);
+				};
+				
+				function fadeIn(obj, period){
+					var COUNT = 50;
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						var opacityValue = Number.parseFloat(obj.style.opacity);
+						opacityValue += period/COUNT;
+						if(opacityValue < 1){
+							obj.style.opacity = opacityValue;
+						}else{
+							obj.style.opacity = 1;
+							clearInterval(obj.timer);
+							for(var i = 0; i < li.length; i++){
+								if(i == j){
+									continue;
+								}
+								li[i].style.opacity = '0';
+							}
+						}
+					},1000/COUNT);
+				}
+				
+				timer = setInterval(startRoll,2000);
 			}
 		</script>
 	</body>

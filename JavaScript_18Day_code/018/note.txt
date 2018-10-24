@@ -1,0 +1,63 @@
+工业化的代码的特点：
+1. 大，很大，大到一个人不可能完成的地步。
+2. 一般来说，都不是version 0
+3. 都是在已有代码的基础上更改或者增加
+4. 阅读已有代码并且修改已有代码的工作量超过50%
+
+怎么接手并且熟悉一个已经存在了很久的项目？
+1. 找到老司机
+2. 获得文档
+3. 配置环境：
+	编辑环境
+	编译环境
+	运行环境
+4. 下载代码
+5. 编译通过，生成可执行文件
+6. 启动程序，获得runtime
+7. 获得debug手段和log手段。
+8. 阅读代码，分割主代码与库，确定接口。
+9. 根据场景，找到各段代码，并进行分类。
+
+DOM:
+	轮播图(套餐组图)：div .swiper-container -> .swiper-wrapper
+		(JS-D:初始化1.1.1): div .swiperslide
+			div .imgList
+				img
+			div .circleList
+				div .circle
+					a href:void(0)
+	总价：div .total
+	菜单：div .menuBox  空间按钮 img .room   套餐包按钮： img .pack
+	房间窗口： div .roomList
+		(JS-D)dl: 房间类型
+			dd:房间
+	套餐包窗口： div .packList
+		(JS-D)ul:
+				li:
+					img
+	单品选择窗口： div .productList
+所有套餐的信息，全部包含在json中，换一个json，相当于换一个套餐，代码仅仅是处理程序。
+	json数据结构：
+		套餐（package）—>房间（rooms）—>包，类别（category）-> 单品（products）->可选单品图像 image
+场景： 看代码，按照广度优先搜索
+	初始化：
+		P65：1. createPackage(package);
+				1.1  对每个房间room进行轮询
+					1.1.1 createRoomProductsImageStrAndCircleStr(currentPacRooms[i]);
+						category轮询
+							product轮询
+								image轮询
+									image和circle的html初始化。
+					1.1.2 scale(screenWidth,screenHeight,imageWidth,imageHeigth,0,0);
+						返回图片的宽，高，left，top：保证，1.宽高比不变，2.没有空白，可以切掉一部分。
+				1.2 然后挂载到div .swiper-container
+				1.3 对每个房间room进行轮询
+					1.3.1 初始化每个房间的面积，为roomList增加DOM
+				1.4 然后挂载到div .roomList
+				1.5 初始化包，createRoomcategory(currentRoom);
+					category 轮询
+					挂载到.packList上
+				1.6 计算总价，calculatePackageTotal(currentPackage);
+					层层轮询，计算价格。
+		P67: 2. new swiper()
+	
